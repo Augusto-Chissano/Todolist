@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./icons/icon.png" type="image/x-icon">
+    <script src="./js/register.js" defer></script>
+    <link rel="stylesheet" href="./css/register.css">
+    <title>Cadastre-se!</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>CADASTRO</h2>
+            <form>
+                <input id="name" type="text" placeholder="Nome">
+                <input id="email" type="email" placeholder="Email" required>
+                <select id="profile-type" name="profile">
+                    <option selected disabled>Tipo de Perfil</option>
+                    <option value="Pai">Pai</option>
+                    <option value="Mãe">Mãe</option>
+                    <option value="Filho">Filho</option>
+                    <option value="Visitante">Visitante</option>
+                </select>
+                <input id="password" type="password" placeholder="Senha" required>
+                <input id="confirm-password" type="password" placeholder="Confirmar" required>
+                <button id="create-btn">Cadastrar</button>
+            </form>
+            <div class="create-account">
+                <a href="./index.html">Fazer login</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-content hide" id="modalContent">
+        <p>O seu cadastro foi realizado com sucesso!</p>
+        <button id="okButton">OK</button>
+    </div>
+
+</body>
+
+</html>
