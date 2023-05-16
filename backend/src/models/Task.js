@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 const TaskSchema = mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     description: {
         type: String,
@@ -13,12 +14,16 @@ const TaskSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    category: {
+        type: String,
+        required: true
+    },
     updatedAt: {
         type: Date
     },
     dueDate: {
         type: Date,
-        required: true
+        required: false
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,

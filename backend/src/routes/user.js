@@ -3,7 +3,7 @@ const router = require('express').Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-const scret = process.env.SCRET
+const scret = process.env.SECRET
 
 router.post('/login', async (req, res) => {
 
@@ -39,12 +39,12 @@ router.post('/users', async (req, res) => {
     try {
 
         if (!name || !email || !password || !profile) {
-            return res.status(400).json({ msg: 'Por favor, preencha todos os campos.' });
+            return res.status(400).json({ error: 'Por favor, preencha todos os campos.' });
         }
 
         const existingUser = await User.findOne({ email })
         if (existingUser) {
-            return res.status(400).json({ msg: 'Email já em uso' })
+            return res.status(400).json({ error: 'Email já em uso' })
         }
 
         let user = new User({ name, email, password, profile })
@@ -52,7 +52,7 @@ router.post('/users', async (req, res) => {
 
         res.status(200).json(user)
     } catch (error) {
-        res.status(500).json({ msg: `Erro interno, por favor tente novamente. ${error}` })
+        res.status(500).json({ error: `Erro interno, por favor tente novamente. ${error}` })
     }
 })
 
@@ -62,7 +62,7 @@ router.get('/users', async (req, res) => {
         const users = await User.find()
         res.status(200).json(users)
     } catch (error) {
-        res.status(500).json({ msg: `Erro interno, por favor tente novamente. ${error}` })
+        res.status(500).json({ error: `Erro interno, por favor tente novamente. ${error}` })
     }
 })
 

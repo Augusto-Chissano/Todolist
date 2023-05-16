@@ -3,6 +3,7 @@ const express = require('express')
 const cors = require('cors')
 const db = require('./database/db')
 const userRoutes = require('./routes/user')
+const taskRoutes = require('./routes/task')
 
 
 const app = express()
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
     res.send('<h1>Welcome!</h1>')
 })
 app.use(userRoutes)
+app.use(taskRoutes)
 
 
 //O servidor vai ao ar assim que a base de dados estiver disponivel
