@@ -37,4 +37,60 @@ router.get('/tasks', withAuth, async (req, res) => {
     }
 })
 
+router.delete('/tasks/:taskId', withAuth, async (req, res) => {
+    const taskId = req.params.taskId
+    const userId = req.user._id
+
+    try {
+        const task = await Task.findOne({ _id: taskId })
+
+        if (!task) {
+            return res.status(404).json({ error: 'Tarefa não encontrada' })
+        }
+
+        if (task.author.toString() !== userId) {
+            return res.status(403).json({ error: 'Usuário não autorizado a remover esta tarefa' })
+        }
+
+        await Task.deleteOne({ _id: taskId })
+        res.json({ message: 'Tarefa removida com sucesso' })
+    } catch (error) {
+        res.status(500).json({ error: 'Ocorreu um erro ao remover a tarefa' })
+    }
+})
+
+// Rota para concluir uma tarefa
+router.put('/tasks/:taskId/complete', async (req, res) => {
+    const taskId = req.params.taskId;
+    
+    try {
+        const task = await Task.findOne({ _id: taskId })
+
+        if (!task) {
+            return res.status(404).json({ error: 'Tarefa não encontrada' });
+        }
+        
+        task.completed = true;
+
+        await task.save();
+
+        res.json({ message: 'Tarefa concluída com sucesso' });
+    } catch (error) {
+        res.status(500).json({ error: 'Ocorreu um erro ao concluir a tarefa' });
+    }
+});
+
+router.post('/validate-task-name', (req, res) => {
+    const { taskName } = req.body;
+
+    // Verifica se já existe uma tarefa com o mesmo nome
+    const existingTask = Task.find({ name: taskName });
+
+    if (existingTask) {
+        res.json({ valid: false });
+    } else {
+        res.json({ valid: true });
+    }
+});
+
 module.exports = router

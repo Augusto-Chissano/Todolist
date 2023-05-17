@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./icons/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <script src="./js/home.js" defer></script>
     <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="css/createtask.css">
+    <script src="js/createtask.js" defer></script>
     <title>Todolist</title>
 </head>
 
@@ -19,11 +20,11 @@
                 <img src="./icons/icon.png">
                 <h2>TODOLIST</h2>
             </div>
-            <button class="publicar" id="new-task">+ Nova tarefa</button>
+            <button class="publicar">+ Nova tarefa</button>
             <p>Tarefas</p>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="./home.html">
                         <span class="icon"><i class="far fa-calendar"></i></span>
                         <span class="item">Todas</span>
                     </a>
@@ -56,36 +57,34 @@
         </div>
         <main>
             <h2>Olá, <span id="nome"></span></h2>
-            <h1>TODAS AS TAREFAS</h1>
+            <h1>CRIAR TAREFA</h1>
 
-            <table class="task-table" id="task-table">
-                <thead>
-                  <tr>
-                    <th class="column-header">Tarefa</th>
-                    <th class="column-header">Descrição</th>
-                    <th class="column-header">Categoria</th>
-                    <th class="column-header">Data de Vencimento</th>
-                    <th class="column-header">Status</th>
-                  </tr>
-                </thead>
-                <tbody id="table">
-                  <tr>
-                    <td class="task-name">Tarefa 1</td>
-                    <td class="task-description">Descrição 1</td>
-                    <td class="task-category">Categoria 1</td>
-                    <td class="task-due-date">01/01/2022</td>
-                  </tr>
-                  <tr>
-                    <td class="task-name">Tarefa 2</td>
-                    <td class="task-description">Descrição 2</td>
-                    <td class="task-category">Categoria 2</td>
-                    <td class="task-due-date">02/02/2022</td>
-                  </tr>
-                  <!-- Adicione mais linhas conforme necessário -->
-                </tbody>
-              </table>
-              
+            <form class="task-form">
+                <div class="form-group">
+                    <label class="form-label" for="task-name">Tarefa</label>
+                    <input class="form-input" type="text" id="task-name" name="task-name" required>
+                    <div id="task-name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="task-description">Descrição</label>
+                    <textarea class="form-input" id="task-description" rows="7" name="task-description"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="task-category">Categoria</label>
+                    <input class="form-input" type="text" id="task-category" name="task-category" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="task-due-date">Data de Vencimento</label>
+                    <input class="form-input" type="date" id="task-due-date" name="task-due-date" required>
+                </div>
+                <button class="form-button">Adicionar Tarefa</button>
+            </form>
         </main>
+    </div>
+    <div class="modal-content hide" id="modalContent">
+        <p>Tarefa adicionada com sucesso!</p>
+        <button id="okButton">OK</button>
     </div>
 </body>
 

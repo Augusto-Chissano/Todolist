@@ -1,4 +1,4 @@
-*{
+* {
 	list-style: none;
 	text-decoration: none;
 	margin: 0;
@@ -7,11 +7,11 @@
 	font-family: Arial, sans-serif;
 }
 
-body{
+body {
 	background: #f5f6fa;
 }
 
-.wrapper .sidebar{
+.wrapper .sidebar {
 	background: rgb(222, 229, 232);
 	position: fixed;
 	top: 0;
@@ -19,37 +19,37 @@ body{
 	width: 250px;
 	height: 100%;
 	padding: 10px;
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 	transition: all 0.5s ease;
 }
 
-.wrapper .sidebar .profile{
+.wrapper .sidebar .profile {
 	margin-bottom: 30px;
 	text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
 }
 
-.wrapper .sidebar .profile img{
+.wrapper .sidebar .profile img {
 	height: 30px;
 }
 
-.wrapper .sidebar .profile h2{
+.wrapper .sidebar .profile h2 {
 	margin: 10px 0 5px;
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 }
 
-.wrapper .sidebar .profile p{
+.wrapper .sidebar .profile p {
 	color: rgb(206, 240, 253);
 	font-size: 14px;
 }
 
-.wrapper .sidebar ul li a{
+.wrapper .sidebar ul li a {
 	display: block;
 	padding: 13px 30px;
 	border-bottom: 1px solid #10558d;
@@ -58,92 +58,161 @@ body{
 	position: relative;
 }
 
-.wrapper .sidebar ul li a .icon{
+.wrapper .sidebar ul li a .icon {
 	color: black;
 	width: 30px;
 	display: inline-block;
 }
 
 .publicar {
-    color: #fff;
-    background-color:RGB(107, 151, 217);
-    border: none;
-    cursor: pointer;
-    border-radius: 7px;
-    font-size: 14px;
-    font-weight: bold;
-    padding: 1rem;
-    margin-bottom: 1.5rem;
-} 
+	color: #fff;
+	background-color: RGB(107, 151, 217);
+	border: none;
+	cursor: pointer;
+	border-radius: 7px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 1rem;
+	margin-bottom: 1.5rem;
+	opacity: 0.9;
+}
 
-.wrapper .sidebar ul li a.active{
+.publicar:hover {
+	transition: .5s;
+	opacity: 1;
+}
+
+.wrapper .sidebar ul li a.active {
 	color: #fff;
 }
 
 .wrapper .sidebar ul li a:hover:before,
-.wrapper .sidebar ul li a.active:before{
+.wrapper .sidebar ul li a.active:before {
 	display: block;
 }
 
-.wrapper .section{
+.wrapper .section {
 	width: calc(100% - 225px);
 	margin-left: 225px;
 	transition: all 0.5s ease;
 }
 
-.wrapper .section .top_navbar{
+.wrapper .section .top_navbar {
 	height: 50px;
 	display: flex;
 	align-items: center;
 	padding: 0 30px;
- 
+
 }
 
-.wrapper .section .top_navbar .hamburger a{
+.wrapper .section .top_navbar .hamburger a {
 	font-size: 28px;
 	color: black;
 }
 
-.wrapper .section .top_navbar .hamburger a:hover{
+.wrapper .section .top_navbar .hamburger a:hover {
 	color: rgb(222, 229, 232);
 }
 
- 
 
-body.active .wrapper .sidebar{
+
+body.active .wrapper .sidebar {
 	left: -225px;
 }
 
-body.active .wrapper .section{
+body.active .wrapper .section {
 	margin-left: 0;
 	width: 100%;
 }
 
 #logout {
-    margin-top: 4rem;
-    background-color: #fff;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
+	margin-top: 4rem;
+	background-color: #fff;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
 }
 
 #logout-a {
-    border-bottom: none;
+	border-bottom: none;
 }
 
 i {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .wrapper .sidebar ul li a {
-    display: flex;
-    gap: 5px;
-    align-items: center;
+	display: flex;
+	gap: 5px;
+	align-items: center;
 }
 
 main {
-	margin-left: 250px;
-	padding: 10px;
+	margin-left: 270px;
+	margin-top: 50px;
+	padding: 20px;
 	padding-left: 15px;
 }
 
+main h2 {
+	font-weight: normal;
+	margin-bottom: 1rem;
+}
+
+
+/*
+*
+*Tasks table
+*
+*/
+.task-table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 1rem;
+}
+
+.column-header {
+	background-color: rgb(107, 151, 217);
+	color: white;
+	padding: 10px;
+}
+
+.task-name,
+.task-description,
+.task-category,
+.task-due-date {
+	border: 1px solid #ddd;
+	padding: 10px;
+	color: black;
+}
+
+.task-status {
+	border: 1px solid #ddd;
+	text-align: center;
+}
+
+.concluir-btn {
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+/* Estilização quando o mouse está sobre o botão */
+.concluir-tarefa:hover {
+	background-color: #45a049;
+	/* Cor de fundo alterada */
+}
+
+/* Estilização quando o botão é pressionado */
+.concluir-tarefa:active {
+	background-color: #367027;
+	/* Cor de fundo alterada novamente */
+}

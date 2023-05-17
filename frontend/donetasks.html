@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./icons/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-    <script src="./js/home.js" defer></script>
     <link rel="stylesheet" href="./css/home.css">
+    <script src="js/donetasks.js" defer></script>
     <title>Todolist</title>
 </head>
 
@@ -23,7 +23,7 @@
             <p>Tarefas</p>
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="./home.html">
                         <span class="icon"><i class="far fa-calendar"></i></span>
                         <span class="item">Todas</span>
                     </a>
@@ -56,19 +56,18 @@
         </div>
         <main>
             <h2>Olá, <span id="nome"></span></h2>
-            <h1>TODAS AS TAREFAS</h1>
+            <h1>TAREFAS CONCLUÍDAS</h1>
 
-            <table class="task-table" id="task-table">
+            <table class="task-table">
                 <thead>
                   <tr>
                     <th class="column-header">Tarefa</th>
                     <th class="column-header">Descrição</th>
                     <th class="column-header">Categoria</th>
                     <th class="column-header">Data de Vencimento</th>
-                    <th class="column-header">Status</th>
                   </tr>
                 </thead>
-                <tbody id="table">
+                <tbody>
                   <tr>
                     <td class="task-name">Tarefa 1</td>
                     <td class="task-description">Descrição 1</td>
