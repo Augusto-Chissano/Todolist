@@ -29,9 +29,13 @@ router.post('/tasks', withAuth, async (req, res) => {
 })
 
 router.get('/tasks', withAuth, async (req, res) => {
+
     try {
+        const author = req.user._id
         const tasks = await Task.find()
+
         res.status(200).json(tasks)
+
     } catch (error) {
         res.status(500).json({ error: `Ocorreu um erro interno, por favor tente novamente ${error}` })
     }

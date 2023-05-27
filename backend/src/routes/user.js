@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 
 const scret = process.env.SECRET
 
-router.post('/login', async (req, res) => {
+router.post('/users/login', async (req, res) => {
 
     const { email, password } = req.body
 
@@ -32,7 +32,7 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/users', async (req, res) => {
+router.post('/users/signup', async (req, res) => {
 
     const { name, email, password, profile } = req.body
 

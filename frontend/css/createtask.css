@@ -1,6 +1,11 @@
 .task-form {
     max-width: 100%;
     margin: 0 auto;
+    padding-right: 8rem;
+}
+
+textarea {
+    resize: none;
 }
 
 .form-group {
@@ -18,8 +23,10 @@
 .form-input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
     border-radius: 4px;
+    background-color: rgb(222, 229, 232);
+    outline: none;
+    border: none;
 }
 
 .form-button {
@@ -85,4 +92,13 @@
     .modal-content button{
         width:150px ;
     }
+}
+
+#title {
+    margin-bottom: 1rem;
+}
+
+.success {
+    font-size: 29px;
+    color: #2ecc71;
 }

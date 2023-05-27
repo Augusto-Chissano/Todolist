@@ -1,4 +1,4 @@
-const requestURL = 'http://localhost:3000/users'
+const baseURL = 'http://localhost:3000'
 const createBtn = document.querySelector('#create-btn')
 const nameInput = document.querySelector('#name')
 const emailInput = document.querySelector('#email')
@@ -15,7 +15,7 @@ const signUp = async (name, email, password, profile) => {
     try {
         const user = { name, email, password, profile }
         console.log(user)
-        const response = await fetch(requestURL, {
+        const response = await fetch(`${baseURL}/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

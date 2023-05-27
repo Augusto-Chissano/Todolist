@@ -1,9 +1,9 @@
 
 # 🎯 TODOLIST
 
-  
 
-<img  src="preview.jpeg"  alt="preview"  style="border-radius: 25px">
+
+<img  src="preview.jpeg"  alt="preview"  style="border-radius: 15px; cursor: pointer;">
 
 
 ## 📝 Sobre

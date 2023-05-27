@@ -136,3 +136,8 @@ body {
         width:150px ;
     }
 }
+
+.success {
+    font-size: 29px;
+    color: #2ecc71;
+}

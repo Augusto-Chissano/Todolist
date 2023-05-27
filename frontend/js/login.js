@@ -1,5 +1,5 @@
 const btnLogin = document.querySelector('#login')
-const requestURL = 'http://localhost:3000/login'
+const baseURL = 'http://localhost:3000'
 const emailInput = document.querySelector('#email')
 const passwordInput = document.querySelector('#password')
 const form = document.querySelector('form')
@@ -8,7 +8,7 @@ const login = async (email, password) => {
 
     try {
         const user = { email, password }
-        const response = await fetch(requestURL, {
+        const response = await fetch(`${baseURL}/users/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

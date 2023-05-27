@@ -101,7 +101,7 @@ function validateTaskName() {
         })
 }
 
-const taskNameInput = document.getElementById('task-name')
-const taskNameError = document.getElementById('task-name-error')
+//const taskNameInput = document.getElementById('task-name')
+//const taskNameError = document.getElementById('task-name-error')
 
-taskNameInput.addEventListener('blur', validateTaskName);
+//taskNameInput.addEventListener('blur', validateTaskName);

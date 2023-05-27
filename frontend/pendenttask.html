@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./pendenttask.html">
+                    <a href="#">
                         <span class="icon"><i class="far fa-bell"></i></span>
                         <span class="item">Pendentes</span>
                     </a>
@@ -38,6 +38,12 @@
                     <a href="./donetasks.html">
                         <span class="icon"><i class="fas fa-check"></i></span>
                         <span class="item">Concluídas</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./taskstats.html">
+                        <span class="icon"><i class="fas fa-chart-bar"></i></span>
+                        <span class="item">Estatísticas</span>
                     </a>
                 </li>
                 <li>
@@ -58,23 +64,24 @@
             <h2>Olá, <span id="nome"></span></h2>
             <h1>TAREFAS PENDENTES</h1>
 
-            <table class="task-table">
+            <table class="task-table" id="task-table">
                 <thead>
                   <tr>
                     <th class="column-header">Tarefa</th>
                     <th class="column-header">Descrição</th>
                     <th class="column-header">Categoria</th>
                     <th class="column-header">Data de Vencimento</th>
+                    <th class="column-header">Status</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr class="hide">
                     <td class="task-name">Tarefa 1</td>
                     <td class="task-description">Descrição 1</td>
                     <td class="task-category">Categoria 1</td>
                     <td class="task-due-date">01/01/2022</td>
                   </tr>
-                  <tr>
+                  <tr class="hide">
                     <td class="task-name">Tarefa 2</td>
                     <td class="task-description">Descrição 2</td>
                     <td class="task-category">Categoria 2</td>
