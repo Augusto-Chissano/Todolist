@@ -1,11 +1,11 @@
 const nome = document.getElementById('nome')
+const author = document.getElementById('author')
 const storedData = localStorage.getItem('user')
 const user = JSON.parse(storedData)
 const token = localStorage.getItem('token')
-nome.innerText = user.name
+author.innerText = user.name
 
 const baseURL = 'http://localhost:3000'
-const requestURL = 'http://localhost:3000/tasks'
 
 const newTaskBtn = document.querySelector('#new-task')
 newTaskBtn.addEventListener('click', () => {

@@ -87,7 +87,7 @@ body {
 
 .publicar:hover {
 	transition: .5s;
-	opacity: 1;
+	background-color: #0069d9;
 }
 /*
 .wrapper .sidebar ul li a.active {
@@ -173,7 +173,7 @@ i {
 
 main {
 	margin-left: 270px;
-	margin-top: 50px;
+	margin-top: 0.5rem;
 	padding: 20px;
 	padding-left: 15px;
 }
@@ -244,3 +244,59 @@ main h2 {
 .hide {
 	display: none;
 }
+
+#author {
+	font-weight: 550;
+	font-size: 1.2rem;
+  }
+  .header {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding: 20px;
+	  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+	  padding-right: 5rem;
+	  margin-bottom: 2rem;
+  }
+  
+  .task-select-container {
+	  margin-right: 10px;
+  }
+
+  .search-container {
+	display: flex;
+	align-items: center;
+	background-color: #fff;
+	padding: 0px;
+	border-radius: 5px;
+  }
+  
+  .search-container input {
+	flex: 1;
+	border: none;
+	background-color: transparent;
+	padding: 7px;
+	font-size: 16px;
+	outline: none;
+  }
+  
+  .search-container button {
+	border: none;
+	background-color: rgb(107, 151, 217);
+	color: #fff;
+	padding: 7px 10px;
+	border-radius: 0 5px 5px 0;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+  }
+  
+  .search-container button:hover {
+	background-color: #0069d9;
+  }
+  
+  .search-container button i {
+	margin-right: 5px;
+  }
+  
+  

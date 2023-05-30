@@ -16,7 +16,7 @@
     <div class="wrapper">
         <div class="sidebar">
             <div class="profile">
-                <img src="./icons/icon.png">
+                <img alt="icon" src="./icons/icon.png">
                 <h2>TODOLIST</h2>
             </div>
             <button class="publicar" id="new-task">+ Nova tarefa</button>
@@ -61,7 +61,20 @@
             </ul>
         </div>
         <main>
-            <h2>Olá, <span id="nome"></span></h2>
+            <h2 style="display: none;">Olá, <span id="nome"></span></h2>
+            <div class="header">
+                <div class="search-container">
+                    <input type="text" placeholder="Pesquisar">
+                    <button>
+                        <i class="fas fa-search"></i>
+                        <span>Pesquisar</span>
+                    </button>
+                </div>
+
+                <div class="task-select-container">
+                    <label id="author">Autor:</label>
+                </div>
+            </div>
             <h1>TAREFAS PENDENTES</h1>
 
             <table class="task-table" id="task-table">

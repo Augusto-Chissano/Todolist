@@ -3,7 +3,7 @@ const router = require('express').Router()
 const User = require('../models/User')
 const jwt = require('jsonwebtoken')
 
-const scret = process.env.SECRET
+const secret = process.env.SECRET_KEY
 
 router.post('/users/login', async (req, res) => {
 
@@ -23,7 +23,7 @@ router.post('/users/login', async (req, res) => {
             if (!isCorrectPassword) {
                 res.status(400).json({ msg: 'Email ou senha inválidos' })
             } else {
-                const token = jwt.sign({ email }, scret, { expiresIn: '10d' })
+                const token = jwt.sign({ email }, secret, { expiresIn: '10d' })
                 res.status(200).json({ token, user })
             }
         }

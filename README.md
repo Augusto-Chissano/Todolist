@@ -7,8 +7,16 @@
 
 
 ## 📝 Sobre
+Projecto fullstack, um aplicativo web intuitivo para gerenciamento de tarefas! Com recursos abrangentes e uma interface amigável, o aplicativo simplifica o processo de organização e acompanhamento de tarefas diárias.
 
-Projecto fullstack com as funções de CRUD - ( CREATE, READ, UPDATE, DELETE ), sistema de cadastro e login com área privada para usuários logados.
+Recursos :
+- Criação de tarefas: Crie facilmente tarefas personalizadas.
+- Acompanhamento do progresso: Marque tarefas como concluídas.
+- Visualização personalizada: Navegue facilmente por suas tarefas pendentes, concluídas e até mesmo visualize estatísticas.
+- Painel de estatísticas: Acesse gráficos, uma forma adequada de visualizar o progresso.
+- Área de login e cadastro
+
+Valorizo comentários e sugestões, portanto, sinta-se à vontade para me contactar com suas opiniões e ideias de melhorias.
 
 
 ## 🔍 Tecnologias utilizadas

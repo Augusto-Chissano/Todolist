@@ -21,6 +21,8 @@ const login = async (email, password) => {
             const { user, token } = data
             return { user, token }
         } else {
+            const data = await response.json();
+            return alert(data.msg)
             throw new Error('Erro ao fazer login.')
         }
     } catch (error) {
@@ -37,7 +39,6 @@ const handleLogin = async () => {
         const { user, token } = await login(email, password)
         localStorage.setItem('user', JSON.stringify(user))
         localStorage.setItem('token', token)
-        console.log(localStorage.getItem('user'))
         //Redirecionamento para a tela principal
         return window.location.href = 'home.html'
         console.log('Login bem-sucedido!')
@@ -60,3 +61,14 @@ emailInput.addEventListener('click', () => {
 passwordInput.addEventListener('click', () => {
     passwordInput.style.borderColor = '#007bff'
 })
+
+emailInput.addEventListener('blur', () => {
+    if (!isEmail(emailInput.value)) {
+        emailInput.style.borderColor = 'tomato'
+    }      
+})
+
+function isEmail(value) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+}

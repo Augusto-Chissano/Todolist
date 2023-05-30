@@ -33,6 +33,8 @@ const addTask = async (name, description, category, dueDate, author) => {
             const data = await response.json()
             return data
         } else {
+            const data = await response.json()
+            alert(data.error)
             throw new Error('Erro ao cadastrar')
         }
 

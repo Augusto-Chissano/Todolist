@@ -27,6 +27,8 @@ const signUp = async (name, email, password, profile) => {
             const data = await response.json()
             return data
         } else {
+            const data = await response.json()
+            alert(data.error)
             throw new Error('Erro ao cadastrar')
         }
 
@@ -54,7 +56,14 @@ const handleSignUp = async () => {
 
 createBtn.addEventListener('click', async (event) => {
     event.preventDefault()
-    await handleSignUp()
+    if (passwordInput.value !== confirmPasswordInput.value) {
+        //alert('Por favor confirme a sua senha!')
+        passwordInput.style.borderColor = 'tomato'
+        confirmPasswordInput.style.borderColor = 'tomato'
+    } else {
+        event.preventDefault()
+        await handleSignUp()
+    }
 })
 
 
@@ -62,5 +71,26 @@ okButton.addEventListener('click', () => {
     return window.location.href = 'index.html'
 });
 
-// Mostrar o modal quando necessário
 
+
+emailInput.addEventListener('blur', () => {
+    if (!isEmail(emailInput.value)) {
+        emailInput.style.borderColor = 'tomato'
+    }
+})
+
+emailInput.addEventListener('click', () => {
+    emailInput.style.borderColor = '#007bff'
+})
+confirmPasswordInput.addEventListener('click', () => {
+    confirmPasswordInput.style.borderColor = '#007bff'
+})
+passwordInput.addEventListener('click', () => {
+    passwordInput.style.borderColor = '#007bff'
+})
+
+
+function isEmail(value) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value);
+}

@@ -1,9 +1,10 @@
 const baseURL = 'http://localhost:3000'
 const nome = document.getElementById('nome')
+const author = document.getElementById('author')
 const storedData = localStorage.getItem('user')
 const token = localStorage.getItem('token')
 var user = JSON.parse(storedData)
-nome.innerText = user.name
+author.innerText = user.name
 
 
 const newTaskBtn = document.querySelector('#new-task')
