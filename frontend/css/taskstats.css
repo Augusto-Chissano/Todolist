@@ -68,6 +68,10 @@ select {
   .completed {
     color: #2ecc71;
   }
+
+  .deleted {
+    color: tomato;
+  }
   
   .number {
     font-size: 3rem;

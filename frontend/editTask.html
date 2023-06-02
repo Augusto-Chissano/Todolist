@@ -8,7 +8,8 @@
     <link rel="shortcut icon" href="./icons/icon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
     <link rel="stylesheet" href="./css/home.css">
-    <script src="js/pendenttask.js" defer></script>
+    <link rel="stylesheet" href="css/createtask.css">
+    <script src="js/editTask.js" defer></script>
     <title>Todolist</title>
 </head>
 
@@ -19,7 +20,7 @@
                 <img alt="icon" src="./icons/icon.png">
                 <h2>TODOLIST</h2>
             </div>
-            <button class="publicar" id="new-task">+ Nova tarefa</button>
+            <button class="publicar">+ Nova tarefa</button>
             <p>Tarefas</p>
             <ul>
                 <li>
@@ -29,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="./pendenttask.html">
                         <span class="icon"><i class="far fa-bell"></i></span>
                         <span class="item">Pendentes</span>
                     </a>
@@ -61,50 +62,35 @@
             </ul>
         </div>
         <main>
-            <h2 style="display: none;">Olá, <span id="nome"></span></h2>
-            <div class="header">
-                <div class="search-container">
-                    <input id="searchInput" type="text" placeholder="Pesquisar">
-                    <button>
-                        <i class="fas fa-search"></i>
-                        <span>Pesquisar</span>
-                    </button>
-                </div>
+            <h2>Olá, <span id="nome"></span></h2>
+            <h1 id="title">EDITAR TAREFA</h1>
 
-                <div class="task-select-container">
-                    <label id="author">Autor:</label>
+            <form class="task-form">
+                <div class="form-group">
+                    <label class="form-label" for="task-name">Tarefa</label>
+                    <input class="form-input" type="text" id="task-name" name="task-name" required>
                 </div>
-            </div>
-            <h1>TAREFAS PENDENTES</h1>
-
-            <table class="task-table" id="task-table">
-                <thead>
-                  <tr>
-                    <th class="column-header">Tarefa</th>
-                    <th class="column-header">Descrição</th>
-                    <th class="column-header">Categoria</th>
-                    <th class="column-header">Data de Vencimento</th>
-                    <th class="column-header">Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr class="hide">
-                    <td class="task-name">Tarefa 1</td>
-                    <td class="task-description">Descrição 1</td>
-                    <td class="task-category">Categoria 1</td>
-                    <td class="task-due-date">01/01/2022</td>
-                  </tr>
-                  <tr class="hide">
-                    <td class="task-name">Tarefa 2</td>
-                    <td class="task-description">Descrição 2</td>
-                    <td class="task-category">Categoria 2</td>
-                    <td class="task-due-date">02/02/2022</td>
-                  </tr>
-                  <!-- Adicione mais linhas conforme necessário -->
-                </tbody>
-              </table>
-              
+                <div class="form-group">
+                    <label class="form-label" for="task-description">Descrição</label>
+                    <textarea  class="form-input" id="task-description" rows="7" name="task-description"
+                        required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="task-category">Categoria</label>
+                    <input class="form-input" type="text" id="task-category" name="task-category" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="task-due-date">Data de Vencimento</label>
+                    <input class="form-input" type="date" id="task-due-date" name="task-due-date" required>
+                </div>
+                <button class="form-button">Adicionar Tarefa</button>
+            </form>
         </main>
+    </div>
+    <div class="modal-content hide" id="modalContent">
+        <p>Tarefa adicionada com sucesso!</p>
+        <i class="fas fa-check-circle success"></i>
+        <button id="okButton">OK</button>
     </div>
 </body>
 

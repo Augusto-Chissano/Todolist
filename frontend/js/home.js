@@ -32,12 +32,37 @@ function renderTasks(tasks) {
     const tableBody = document.querySelector('#task-table tbody')
     tableBody.innerHTML = ''
 
-    const userTasks = tasks.filter(task => task.author === user._id)
+    if (user.profile === 'Pai') {
+       // const userTasks = tasks.filter(task =>(task.deleted === false))
+        tasks.forEach(task => {
+            const row = document.createElement('tr')
+            const date = task.dueDate.slice(0, 10)
+            row.innerHTML = `
+        <td class="task-name">${task.name}</td>
+        <td class="task-description">${task.description}</td>
+        <td class="task-category">${task.category}</td>
+        <td class="task-due-date">${date}</td>
+        <td class="task-status">
+        ${task.completed ? 'Concluída' : 'Pendente'}
+      </td>
+        <td class="task-status">
+        ${task.deleted ?'Eliminada' :`<button class="excluir-btn" data-task-id="${task._id}">Excluir</button>`}
+      </td>
 
-    userTasks.forEach(task => {
-        const row = document.createElement('tr')
-        const date = task.dueDate.slice(0, 10)
-        row.innerHTML = `
+        <td class="task-status">
+        ${`<button class="editar-btn" data-task-id="${task._id}">Editar</button>`}
+      </td>
+      `
+            tableBody.appendChild(row)
+        })
+    } else {
+        const userTasks = tasks.filter(task => (task.author === user._id) && (task.deleted === false))
+
+        userTasks.forEach(task => {
+            console.log(task.deleted)
+            const row = document.createElement('tr')
+            const date = task.dueDate.slice(0, 10)
+            row.innerHTML = `
         <td class="task-name">${task.name}</td>
         <td class="task-description">${task.description}</td>
         <td class="task-category">${task.category}</td>
@@ -45,10 +70,16 @@ function renderTasks(tasks) {
         <td class="task-status">
         ${task.completed ? 'Concluída' : `<button class="concluir-btn" data-task-id="${task._id}">Concluir</button>`}
       </td>
+        <td class="task-status">
+        ${`<button class="excluir-btn" data-task-id="${task._id}">Excluir</button>`}
+      </td>
+        <td class="task-status">
+        ${`<button class="editar-btn" data-task-id="${task._id}">Editar</button>`}
+      </td>
       `
-
-        tableBody.appendChild(row)
-    })
+            tableBody.appendChild(row)
+        })
+    }
 
     // Adicionar um evento de clique para os botões "Concluir"
     const concluirBtns = document.querySelectorAll('.concluir-btn')
@@ -57,6 +88,24 @@ function renderTasks(tasks) {
             const taskId = btn.getAttribute('data-task-id')
             console.log(taskId)
             concluirTarefa(taskId)
+        })
+    })
+
+    const excluirBtns = document.querySelectorAll('.excluir-btn')
+    excluirBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const taskId = btn.getAttribute('data-task-id')
+            console.log(1234)
+            excluirTarefa(taskId)
+        })
+    })
+
+    const editarBtns = document.querySelectorAll('.editar-btn')
+    editarBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const taskId = btn.getAttribute('data-task-id')
+            localStorage.setItem('taskid', JSON.stringify(taskId))
+            return window.location.href = 'editTask.html'
         })
     })
 }
@@ -76,6 +125,20 @@ function concluirTarefa(taskId) {
             console.error('Erro ao concluir a tarefa:', error)
         })
 }
+function excluirTarefa(taskId) {
+    fetch(`${baseURL}/tasks/${taskId}/delete`,
+        {
+            method: 'PUT'
+        })
+        .then(response => response.json())
+        .then(updatedTask => {
+            // Atualizar a tabela com a tarefa concluída
+            fetchTasks()
+        })
+        .catch(error => {
+            console.error('Erro ao excluir a tarefa:', error)
+        })
+}
 
 fetchTasks()
 
@@ -87,79 +150,25 @@ fetchTasks()
 
 
 
+// Função para realizar a pesquisa
+function searchTasks() {
+    var searchTerm = document.querySelector("#searchInput").value
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Fill table
-
-/*
-function fillTaskTable() {
-    const taskTable = document.getElementById('task-table');
-
-    fetch(`${requestURL}`, {
+    fetch(`${baseURL}/tasks`, {
         headers: {
             'authorization': token
         }
-    })
-        .then(response => response.json())
-        .then(tasks => {
-            const tbody = taskTable.querySelector('tbody');
-            tbody.innerHTML = '';
-
-            const userTasks = tasks.filter(task => task.author === user._id)
-
-            userTasks.forEach(task => {
-                const row = document.createElement('tr')
-                const nameCell = document.createElement('td')
-                nameCell.classList = "task-name"
-                const descriptionCell = document.createElement('td')
-                descriptionCell.classList = "task-description"
-                const categoryCell = document.createElement('td')
-                categoryCell.classList = "task-category"
-                const dueDateCell = document.createElement('td')
-                dueDateCell.classList = "task-due-date"
-
-                nameCell.textContent = task.name
-                descriptionCell.textContent = task.description
-                categoryCell.textContent = task.category
-                dueDateCell.textContent = task.dueDate
-
-                row.appendChild(nameCell)
-                row.appendChild(descriptionCell)
-                row.appendChild(categoryCell)
-                row.appendChild(dueDateCell)
-
-                tbody.appendChild(row)
+    }).then(response => response.json())
+        .then(function (data) {
+            var filteredTasks = data.filter(function (task) {
+                return task.name.toLowerCase().includes(searchTerm.toLowerCase())
             })
+            renderTasks(filteredTasks)
         })
-        .catch(error => {
-            console.error('Ocorreu um erro:', error)
+        .catch(function (error) {
+            console.error("Ocorreu um erro ao buscar as tarefas:", error)
         })
 }
-*/
-//fillTaskTable()
+
+document.querySelector("#searchInput").addEventListener("input", searchTasks)
+

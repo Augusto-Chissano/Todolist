@@ -33,6 +33,10 @@ const TaskSchema = mongoose.Schema({
     completed: {
         type: Boolean,
         default: false
+    },
+    deleted: {
+        type: Boolean,
+        default: false
     }
 })
 

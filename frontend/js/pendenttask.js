@@ -31,12 +31,13 @@ function renderTasks(tasks) {
     const tableBody = document.querySelector('#task-table tbody')
     tableBody.innerHTML = ''
 
-    const userTasks = tasks.filter(task => (task.author === user._id) && (task.completed === false))
+    if (user.profile === 'Pai') {
+        const userTasks = tasks.filter(task => (task.completed === false))
 
-    userTasks.forEach(task => {
-        const date = task.dueDate.slice(0, 10)
-        const row = document.createElement('tr')
-        row.innerHTML = `
+        userTasks.forEach(task => {
+            const date = task.dueDate.slice(0, 10)
+            const row = document.createElement('tr')
+            row.innerHTML = `
         <td class="task-name">${task.name}</td>
         <td class="task-description">${task.description}</td>
         <td class="task-category">${task.category}</td>
@@ -46,9 +47,27 @@ function renderTasks(tasks) {
       </td>
       `
 
-        tableBody.appendChild(row)
-    })
+            tableBody.appendChild(row)
+        })
+    } else {
+        const userTasks = tasks.filter(task => (task.author === user._id) && (task.completed === false))
 
+        userTasks.forEach(task => {
+            const date = task.dueDate.slice(0, 10)
+            const row = document.createElement('tr')
+            row.innerHTML = `
+        <td class="task-name">${task.name}</td>
+        <td class="task-description">${task.description}</td>
+        <td class="task-category">${task.category}</td>
+        <td class="task-due-date">${date}</td>
+        <td class="task-status">
+        ${task.completed ? 'Concluída' : `<button class="concluir-btn" data-task-id="${task._id}">Concluir</button>`}
+      </td>
+      `
+
+            tableBody.appendChild(row)
+        })
+    }
     // Adicionar um evento de clique para os botões "Concluir"
     const concluirBtns = document.querySelectorAll('.concluir-btn')
     concluirBtns.forEach(btn => {
@@ -77,6 +96,29 @@ function concluirTarefa(taskId) {
 }
 
 fetchTasks()
+
+
+// Função para realizar a pesquisa
+function searchTasks() {
+    var searchTerm = document.querySelector("#searchInput").value
+
+    fetch(`${baseURL}/tasks`, {
+        headers: {
+            'authorization': token
+        }
+    }).then(response => response.json())
+        .then(function (data) {
+            var filteredTasks = data.filter(function (task) {
+                return task.name.toLowerCase().includes(searchTerm.toLowerCase())
+            })
+            renderTasks(filteredTasks)
+        })
+        .catch(function (error) {
+            console.error("Ocorreu um erro ao buscar as tarefas:", error)
+        })
+}
+
+document.querySelector("#searchInput").addEventListener("input", searchTasks)
 
 
 

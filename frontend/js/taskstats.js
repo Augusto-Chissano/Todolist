@@ -28,13 +28,28 @@ function fillTaskNumbers(tasks) {
     const totalTask = document.querySelector('#total-task')
     const completedTask = document.querySelector('#completed-task')
     const pendentTask = document.querySelector('#pendent-task')
+    const deletedTask = document.querySelector('#deleted-task')
 
-    const completedTasks = tasks.filter(task => (task.author === user._id) && (task.completed === true))
-    const totalTasks = tasks.filter(task => (task.author === user._id))
+    if (user.profile === 'Pai') {
+        deletedTasks = tasks.filter((task) => task.deleted)
+        const completedTasks = tasks.filter(task => (task.completed === true))
 
-    totalTask.innerHTML = totalTasks.length
-    completedTask.innerHTML = completedTasks.length
-    pendentTask.innerHTML = totalTasks.length - completedTasks.length
+        totalTask.innerHTML = tasks.length
+        completedTask.innerHTML = completedTasks.length
+        pendentTask.innerHTML = totalTasks.length - completedTasks.length
+        deletedTask.innerHTML = deletedTasks.length
+        
+    } else {
+
+        deletedTasks = tasks.filter((task) => task.deleted)
+        const completedTasks = tasks.filter(task => (task.author === user._id) && (task.completed === true))
+        const totalTasks = tasks.filter(task => (task.author === user._id))
+
+        totalTask.innerHTML = totalTasks.length
+        completedTask.innerHTML = completedTasks.length
+        pendentTask.innerHTML = totalTasks.length - completedTasks.length
+        deletedTask.innerHTML = deletedTasks.length
+    }
 }
 
 fetchTasks()

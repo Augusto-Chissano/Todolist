@@ -39,7 +39,7 @@ router.post('/users/signup', async (req, res) => {
     try {
 
         if (!name || !email || !password || !profile) {
-            return res.status(400).json({ error: 'Por favor, preencha todos os campos.' });
+            return res.status(400).json({ error: 'Por favor, preencha todos os campos.' })
         }
 
         const existingUser = await User.findOne({ email })

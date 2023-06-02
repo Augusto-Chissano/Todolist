@@ -49,3 +49,26 @@ function renderTasks(tasks) {
 }
 
 fetchTasks()
+
+
+// Função para realizar a pesquisa
+function searchTasks() {
+    var searchTerm = document.querySelector("#searchInput").value
+
+    fetch(`${baseURL}/tasks`, {
+        headers: {
+            'authorization': token
+        }
+    }).then(response =>  response.json())
+        .then(function (data) {
+            var filteredTasks = data.filter( function (task)  {
+                return task.name.toLowerCase().includes(searchTerm.toLowerCase())
+            })
+            renderTasks(filteredTasks)
+        })
+        .catch(function (error) {
+            console.error("Ocorreu um erro ao buscar as tarefas:", error)
+        })
+}
+
+document.querySelector("#searchInput").addEventListener("input", searchTasks)

@@ -69,7 +69,7 @@ createBtn.addEventListener('click', async (event) => {
 
 okButton.addEventListener('click', () => {
     return window.location.href = 'index.html'
-});
+})
 
 
 
@@ -80,11 +80,13 @@ emailInput.addEventListener('blur', () => {
 })
 
 emailInput.addEventListener('click', () => {
+   
     emailInput.style.borderColor = '#007bff'
 })
 confirmPasswordInput.addEventListener('click', () => {
     confirmPasswordInput.style.borderColor = '#007bff'
 })
+
 passwordInput.addEventListener('click', () => {
     passwordInput.style.borderColor = '#007bff'
 })
